@@ -17,29 +17,61 @@ const styles = theme => ({
   },
 });
 
-function CenteredGrid(props) {
-  const { classes } = props;
-  const heightStyler = theme => ({
-    heightStyle:{
-        height:window.innerHeight-168,
-    },
-  });
-  const HeightedBigTextField = withStyles(heightStyler)(BigTextField);
-  return (
-    <div className={classes.root} style={{padding: 20}}>
-      <Grid container spacing={24}>
-        <Grid item xs={5}>
-          <HeightedBigTextField />
-        </Grid>
-        <Grid item xs={2}>
-          <Paper className={classes.paper}>xs=2</Paper>
-        </Grid>
-        <Grid item xs={5}>
-            <HeightedBigTextField />
-        </Grid>
-      </Grid>
-    </div>
-  );
+class CenteredGrid extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            fieldHeight:  0,
+        }
+    }
+
+    /**
+     * Calculate & Update state of new dimensions
+     */
+    updateDimensions() {
+        this.setState({fieldHeight: window.innerHeight - 168});
+    }
+
+    /**
+     * Add event listener
+     */
+    componentDidMount() {
+        this.updateDimensions();
+        window.addEventListener("resize", this.updateDimensions.bind(this));
+    }
+
+    /**
+     * Remove event listener
+     */
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateDimensions.bind(this));
+    }
+
+    render() {
+        const { classes } = this.props;
+        const heightStyler = theme => ({
+            heightStyle:{
+                height:this.state.fieldHeight,
+            },
+        });
+        const HeightedBigTextField = withStyles(heightStyler)(BigTextField); // TODO: Hacky but it works
+        return (
+            <div className={classes.root} style={{padding: 20}}>
+            <Grid container spacing={24}>
+                <Grid item xs={5}>
+                <HeightedBigTextField />
+                </Grid>
+                <Grid item xs={2}>
+                <Paper className={classes.paper}>xs=2</Paper>
+                </Grid>
+                <Grid item xs={5}>
+                    <HeightedBigTextField />
+                </Grid>
+            </Grid>
+            </div>
+        );
+    }
 }
 
 CenteredGrid.propTypes = {
