@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import BigTextField from './BigTextField';
+import MiddleColumn from './MiddleColumn';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+  }
 });
 
 class CenteredGrid extends React.Component {
@@ -58,15 +53,15 @@ class CenteredGrid extends React.Component {
         const HeightedBigTextField = withStyles(heightStyler)(BigTextField); // TODO: Hacky but it works
         return (
             <div className={classes.root} style={{padding: 20}}>
-            <Grid container spacing={24}>
+            <Grid container justify="center" alignItems="center" spacing={24}>
                 <Grid item xs={5}>
-                <HeightedBigTextField />
+                <HeightedBigTextField label={"Code Here"}/>
                 </Grid>
                 <Grid item xs={2}>
-                <Paper className={classes.paper}>xs=2</Paper>
+                    <MiddleColumn />
                 </Grid>
                 <Grid item xs={5}>
-                    <HeightedBigTextField />
+                    <HeightedBigTextField label={"Yeeted Result"}/>
                 </Grid>
             </Grid>
             </div>

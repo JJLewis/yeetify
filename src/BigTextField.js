@@ -26,11 +26,11 @@ class OutlinedTextFields extends React.Component {
     return (
         <TextField
           id="outlined-multiline-static"
-          label="Multiline"
+          label={this.props.label}
           multiline
           fullWidth
           rows={2}
-          defaultValue="Default Value"
+          defaultValue=""
           className={classes.textField}
           margin="normal"
           variant="outlined"
