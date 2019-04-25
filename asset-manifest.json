@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/yeetify/static/css/main.3e545749.chunk.css",
+    "main.js": "/yeetify/static/js/main.38ee15d5.chunk.js",
+    "main.js.map": "/yeetify/static/js/main.38ee15d5.chunk.js.map",
+    "runtime~main.js": "/yeetify/static/js/runtime~main.c0f09288.js",
+    "runtime~main.js.map": "/yeetify/static/js/runtime~main.c0f09288.js.map",
+    "static/js/2.b41502e9.chunk.js": "/yeetify/static/js/2.b41502e9.chunk.js",
+    "static/js/2.b41502e9.chunk.js.map": "/yeetify/static/js/2.b41502e9.chunk.js.map",
+    "index.html": "/yeetify/index.html",
+    "precache-manifest.ecce69db87bc7d24ff20d2a1f78fc8eb.js": "/yeetify/precache-manifest.ecce69db87bc7d24ff20d2a1f78fc8eb.js",
+    "service-worker.js": "/yeetify/service-worker.js",
+    "static/css/main.3e545749.chunk.css.map": "/yeetify/static/css/main.3e545749.chunk.css.map",
+    "static/media/logo.svg": "/yeetify/static/media/logo.5d5d9eef.svg"
+  }
+}
