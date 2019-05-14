@@ -7,14 +7,14 @@ export const TokenTypes = Object.freeze({
     'space':5,
     'comment':6,
     'newline':7,
-    'preprocessor':8
+    'preprocessor':8,
+    'eof':9
 });
 
 export class Token {
     constructor(type, value) {
         this.type = type
         this.value = value
-        this._length = this.value.length
     }
 
     get length() {
@@ -23,5 +23,9 @@ export class Token {
 
     static null() {
         return new Token(TokenTypes.null, '');
+    }
+
+    static eof() {
+        return new Token(TokenTypes.eof, '');
     }
 }
