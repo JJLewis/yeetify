@@ -11,7 +11,11 @@ export default class TokenList {
         return this.tokens.length;
     }
 
-    insertAt(index, value) {
-        this.tokens.splice(index, 0, value);
+    getAt(index) {
+        return this.tokens[index];
+    }
+
+    insertAt(index, token) {
+        this.tokens.splice(index, 0, token);
     }
 }
