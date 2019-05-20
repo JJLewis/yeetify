@@ -1,23 +1,24 @@
 import { Token, TokenTypes } from './Tokeniser/Token';
 import { tokenise } from './Tokeniser/Tokeniser';
+import TokenList from './Tokeniser/TokenList';
 
 const yeetableTypes = [TokenTypes.word, TokenTypes.number, TokenTypes.string, TokenTypes.symbol];
 
 export function yeetify(text) {
     let tokenlist = tokenise(text);
     let yeetableTokens = getYeetableTokens(tokenlist); // returns dictionary {token value : token value}
-    let yeets = generateYeets(yeetableTokens.length);
+    let yeets = generateYeets(Object.keys(yeetableTokens).length);
     shuffle(yeets); // so different order everytime.
     let yeetMappings = mapYeetsToYeetableTokens(yeets, yeetableTokens);
     let hashDefineTokens = generateHashDefineTokens(yeetMappings);
-    //padSymbols(tokenlist);
-    tokenlist.prependTokens(hashDefineTokens);
-    mapTokensToYeets(tokenlist, yeetMappings);
-    return tokenlist.valueString;
+    let padded = padSymbols(tokenlist);
+    padded.prependTokens(hashDefineTokens);
+    mapTokensToYeets(padded, yeetMappings);
+    return padded.valueString;
 }
 
 function isTokenYeetable(token) {
-    for (let yeetableType in yeetableTypes) if (token.type === yeetableType) return true;
+    for (let yeetableType of yeetableTypes) if (token.type === yeetableType) return true;
     return false;
 }
 
@@ -64,9 +65,7 @@ function shuffle(array) {
 
 function mapYeetsToYeetableTokens(yeets, yeetableTokens) {
     let yeetMappings = {};
-    for (let yeetableToken in yeetableTokens) {
-        yeetMappings[yeetableToken] = yeets.shift();
-    }
+    for (let yeetableToken in yeetableTokens) yeetMappings[yeetableToken] = yeets.shift();
     return yeetMappings;
 }
 
@@ -79,16 +78,16 @@ function generateHashDefineTokens(yeetMappings) {
 }
 
 function padSymbols(tokenlist) {
-    let i = 0;
-    while (i < tokenlist.length) {
-        if (tokenlist.getAt(i).type === TokenTypes.symbol) {
-            tokenlist.insertAt(i-1, new Token(TokenTypes.space, ' '));
-            tokenlist.insertAt(i+1, new Token(TokenTypes.space, ' '));
-            i += 2; // TODO: check if this is right
-            continue;
-        }
-        i++;
+    let padded = [];
+    for (let i = 0; i < tokenlist.length; i++) {
+        let token = tokenlist.getAt(i);
+        if (token.type === TokenTypes.symbol) {
+            if (i-1 >= 0 && tokenlist.getAt(i-1).type !== TokenTypes.space) padded.push(new Token(TokenTypes.space, ' '));
+            padded.push(token);
+            if (i+1 < tokenlist.length && tokenlist.getAt(i+1).type !== TokenTypes.space) padded.push(new Token(TokenTypes.space, ' '));
+        } else padded.push(token);
     }
+    return new TokenList(padded);
 }
 
 function mapTokensToYeets(tokenlist, yeetMappings) {
