@@ -1,5 +1,5 @@
-import { Token, TokenTypes } from '.Tokeniser/Token';
-import { tokenise } from '.Tokeniser/Tokenise';
+import { Token, TokenTypes } from './Tokeniser/Token';
+import { tokenise } from './Tokeniser/Tokeniser';
 
 const yeetableTypes = [TokenTypes.word, TokenTypes.number, TokenTypes.string, TokenTypes.symbol];
 

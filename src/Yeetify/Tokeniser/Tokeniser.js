@@ -1,6 +1,6 @@
-import { Token } from '.Token';
-import TokenList from '.TokenList';
-import { Scanners } from '.Scanners';
+import { Token } from './Token';
+import TokenList from './TokenList';
+import { Scanners } from './Scanners';
 
 export function tokenise(text) {
     return TokenList(tokenise_as_array(text));
@@ -24,5 +24,5 @@ function scan_one_token(text) {
             return token;
         }
     }
-    throw `The scanners could't match the given input: ${text}`;
+    throw new Error(`The scanners could't match the given input: ${text}`);
 }

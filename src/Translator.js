@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 
 import BigTextField from './BigTextField';
 import MiddleColumn from './MiddleColumn';
+import { yeetify } from './Yeetify/Yeetify';
 
 const styles = theme => ({
   root: {
@@ -23,11 +24,12 @@ class CenteredGrid extends React.Component {
 
     yeetify() {
         let original = this.originalField.getValue();
-        let yeeted = '';
+        let yeeted = yeetify(original);
+        this.yeetedField.setValue(yeeted);
     }
 
     deyeetity() {
-        console.log(this.refs);
+        alert('Under construction');
     }
 
     /**

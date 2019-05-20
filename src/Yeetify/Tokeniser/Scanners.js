@@ -1,5 +1,5 @@
-import {Token, TokenTypes} from '.Token';
-import {Symbols} from '.Symbols';
+import {Token, TokenTypes} from './Token';
+import {Symbols} from './Symbols';
 
 class Scanner {
     constructor() {
