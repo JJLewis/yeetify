@@ -24,6 +24,6 @@ export default class TokenList {
     }
 
     prependTokens(tokens) {
-        this.tokens = tokens + this.tokens;
+        this.tokens = tokens.concat(this.tokens);
     }
 }

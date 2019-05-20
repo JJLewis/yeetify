@@ -57,9 +57,9 @@ class SpaceScanner extends Scanner  {
 
 class SymbolScanner extends Scanner  {
     static get_first_token(text) {
-        for (let i = Symbols.length; i >= 0; i--) {
+        for (let i = Symbols.length-1; i >= 0; i--) {
             let text_section = text.slice(0, i+1);
-            for (let symbol in Symbols) {
+            for (let symbol of Symbols[i]) {
                 if (text_section === symbol) return new Token(TokenTypes.symbol, text_section);
             }
         }

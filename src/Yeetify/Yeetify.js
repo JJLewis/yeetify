@@ -10,7 +10,7 @@ export function yeetify(text) {
     shuffle(yeets); // so different order everytime.
     let yeetMappings = mapYeetsToYeetableTokens(yeets, yeetableTokens);
     let hashDefineTokens = generateHashDefineTokens(yeetMappings);
-    padSymbols(tokenlist);
+    //padSymbols(tokenlist);
     tokenlist.prependTokens(hashDefineTokens);
     mapTokensToYeets(tokenlist, yeetMappings);
     return tokenlist.valueString;
