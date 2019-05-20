@@ -82,6 +82,7 @@ class CommentScanner extends Scanner  {
         if (found) return new Token(TokenTypes.comment, found[0]);
         found = comment2_re.exec(text);
         if (found) return new Token(TokenTypes.comment, found[0]);
+        // TODO: check for multi line comments
         return null;
     }
 }
