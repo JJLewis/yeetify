@@ -18,6 +18,9 @@ class MiddleColumn extends React.Component {
                 <Grid item xs={12}>
                     <Button fullWidth variant="contained" color="secondary" onClick={this.props.deyeetify}>&lt; Deyeet</Button>
                 </Grid>
+                <Grid item xs={12}>
+                    <Button fullWidth variant="contained" target="_blank" href="https://www.onlinegdb.com/online_c_compiler">Try it out: Online GDB</Button>
+                </Grid>
             </Grid>
         );
     }

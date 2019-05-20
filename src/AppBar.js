@@ -30,7 +30,7 @@ function ButtonAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Yeetify
+            yEeTiFy
           </Typography>
         </Toolbar>
       </AppBar>
