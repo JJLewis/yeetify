@@ -38,14 +38,13 @@ function generateYeets(nYeets) {
     for (let i = 0; i < nYeets; i++) {
         let bin = parseInt(String(currentCount), 10).toString(2);
         bin = '0'.repeat(currentPower - bin.length) + bin;
-        let binArr = bin.split('');
 
         // Make yeet from bin
-        let yeet = binArr.shift() === '0' ? 'y' : 'Y';
-        for (let b = 0; b < binArr.length; b++) {
-            yeet += binArr.shift() === '0' ? 'e' : 'E';
+        let yeet = bin[0] === '0' ? 'y' : 'Y';
+        for (let b = 1; b < bin.length-1; b++) {
+            yeet += bin[b] === '0' ? 'e' : 'E';
         }
-        yeet += binArr.shift() === '0' ? 't' : 'T';
+        yeet += bin[bin.length-1] === '0' ? 't' : 'T';
         yeets.push(yeet);
 
         currentCount++;
