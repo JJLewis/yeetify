@@ -22,4 +22,8 @@ export default class TokenList {
     insertAt(index, token) {
         this.tokens.splice(index, 0, token);
     }
+
+    prependTokens(tokens) {
+        this.tokens = tokens + this.tokens;
+    }
 }

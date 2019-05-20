@@ -5,25 +5,27 @@ const yeetableTypes = [TokenTypes.word, TokenTypes.number, TokenTypes.string, To
 
 export function yeetify(text) {
     let tokenlist = tokenise(text);
-    let yeetableTokens = getYeetableTokens(tokenlist);
+    let yeetableTokens = getYeetableTokens(tokenlist); // returns dictionary {token value : token value}
     let yeets = generateYeets(yeetableTokens.length);
     shuffle(yeets); // so different order everytime.
+    let yeetMappings = mapYeetsToYeetableTokens(yeets, yeetableTokens);
+    let hashDefineTokens = generateHashDefineTokens(yeetMappings);
     padSymbols(tokenlist);
-    // match up yeets to tokens (shouldn't match with space, comment, or preprocessor token types)
-    // generate #defines
-    // update all the values of the tokens accorning to mapping
+    tokenlist.prependTokens(hashDefineTokens);
+    mapTokensToYeets(tokenlist, yeetMappings);
+    return tokenlist.valueString;
+}
+
+function isTokenYeetable(token) {
+    for (let yeetableType in yeetableTypes) if (token.type === yeetableType) return true;
+    return false;
 }
 
 function getYeetableTokens(tokenlist) {
     let yeetableTokens = {};
     for (let i = 0; i < tokenlist.length; i++) {
         let token = tokenlist.getAt(i);
-        for (let yeetableType in yeetableTokens) {
-            if (token.type === yeetableType) {
-                yeetableTokens[token.value] = token.value;
-                break;
-            }
-        }
+        if (isTokenYeetable(token)) yeetableTokens[token.value] = token.value;
     }
     return yeetableTokens;
 }
@@ -60,12 +62,38 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
 }
 
+function mapYeetsToYeetableTokens(yeets, yeetableTokens) {
+    let yeetMappings = {};
+    for (let yeetableToken in yeetableTokens) {
+        yeetMappings[yeetableToken] = yeets.shift();
+    }
+    return yeetMappings;
+}
+
+function generateHashDefineTokens(yeetMappings) {
+    let defines = [];
+    for (let value in yeetMappings) {
+        defines.push(new Token(TokenTypes.preprocessor, `#define ${yeetMappings[value]} ${value}\n`));
+    }
+    return defines;
+}
+
 function padSymbols(tokenlist) {
-    for (let i = 0; i < tokenlist.length; i++) {
-        if (tokenlist.getAt(i).type === TokenTypes.space) {
+    let i = 0;
+    while (i < tokenlist.length) {
+        if (tokenlist.getAt(i).type === TokenTypes.symbol) {
             tokenlist.insertAt(i-1, new Token(TokenTypes.space, ' '));
             tokenlist.insertAt(i+1, new Token(TokenTypes.space, ' '));
             i += 2; // TODO: check if this is right
+            continue;
         }
+        i++;
+    }
+}
+
+function mapTokensToYeets(tokenlist, yeetMappings) {
+    for (let i = 0; i < tokenlist.length; i++) {
+        let token = tokenlist.getAt(i);
+        if (isTokenYeetable(token)) token.value = yeetMappings[token.value];
     }
 }
