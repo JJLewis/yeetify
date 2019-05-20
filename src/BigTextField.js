@@ -1,28 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-const styles = theme => ({
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-  }
-});
 
 class OutlinedTextFields extends React.Component {
   state = {
     multiline: 'Controlled',
   };
 
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
   render() {
-    const { classes } = this.props;
     return (
         <TextField
           id="outlined-multiline-static"
@@ -31,10 +16,11 @@ class OutlinedTextFields extends React.Component {
           fullWidth
           rows={2}
           defaultValue=""
-          className={classes.textField}
+          className={this.props.classes.textField}
           margin="normal"
           variant="outlined"
-          InputProps={{ classes: { input: classes.heightStyle } }}
+          ref={this.props.ref}
+          InputProps={{ classes: { input: this.props.classes.textField } }}
         />
     );
   }
@@ -44,4 +30,4 @@ OutlinedTextFields.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(OutlinedTextFields);
+export default OutlinedTextFields;

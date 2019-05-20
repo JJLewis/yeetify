@@ -21,6 +21,14 @@ class CenteredGrid extends React.Component {
         }
     }
 
+    yeetify() {
+        console.log(this.refs.original);
+    }
+
+    deyeetity() {
+        console.log(this.refs);
+    }
+
     /**
      * Calculate & Update state of new dimensions
      */
@@ -46,8 +54,10 @@ class CenteredGrid extends React.Component {
     render() {
         const { classes } = this.props;
         const heightStyler = theme => ({
-            heightStyle:{
+            textField:{
                 height:this.state.fieldHeight,
+                marginLeft: theme.spacing.unit,
+                marginRight: theme.spacing.unit,
             },
         });
         const HeightedBigTextField = withStyles(heightStyler)(BigTextField); // TODO: Hacky but it works
@@ -55,13 +65,13 @@ class CenteredGrid extends React.Component {
             <div className={classes.root} style={{padding: 20}}>
             <Grid container justify="center" alignItems="center" spacing={24}>
                 <Grid item xs={5}>
-                <HeightedBigTextField label={"Code Here"}/>
+                <HeightedBigTextField label={"Code Here"} ref={'original'} />
                 </Grid>
                 <Grid item xs={2}>
-                    <MiddleColumn />
+                    <MiddleColumn yeetify={this.yeetify.bind(this)} deyeetify={this.deyeetity.bind(this)} />
                 </Grid>
                 <Grid item xs={5}>
-                    <HeightedBigTextField label={"Yeeted Result"}/>
+                    <HeightedBigTextField label={"Yeeted Result"} ref={'yeeted'} />
                 </Grid>
             </Grid>
             </div>
