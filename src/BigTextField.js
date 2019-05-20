@@ -7,6 +7,22 @@ class OutlinedTextFields extends React.Component {
     multiline: 'Controlled',
   };
 
+  onChange(e) {
+    this.setState({
+      value: e.target.value
+    });
+  }
+
+  getValue() {
+    return this.state.value;
+  }
+
+  setValue(value) {
+    this.setState({
+      value: value
+    });
+  }
+
   render() {
     return (
         <TextField
@@ -19,7 +35,9 @@ class OutlinedTextFields extends React.Component {
           className={this.props.classes.textField}
           margin="normal"
           variant="outlined"
-          ref={this.props.ref}
+          ref={input => this.input = input}
+          value={this.state.value}
+          onChange={this.onChange.bind(this)}
           InputProps={{ classes: { input: this.props.classes.textField } }}
         />
     );

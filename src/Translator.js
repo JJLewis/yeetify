@@ -22,7 +22,8 @@ class CenteredGrid extends React.Component {
     }
 
     yeetify() {
-        console.log(this.refs.original);
+        let original = this.originalField.getValue();
+        let yeeted = '';
     }
 
     deyeetity() {
@@ -65,13 +66,13 @@ class CenteredGrid extends React.Component {
             <div className={classes.root} style={{padding: 20}}>
             <Grid container justify="center" alignItems="center" spacing={24}>
                 <Grid item xs={5}>
-                <HeightedBigTextField label={"Code Here"} ref={'original'} />
+                <HeightedBigTextField label={"Code Here"} innerRef={field => this.originalField = field} />
                 </Grid>
                 <Grid item xs={2}>
                     <MiddleColumn yeetify={this.yeetify.bind(this)} deyeetify={this.deyeetity.bind(this)} />
                 </Grid>
                 <Grid item xs={5}>
-                    <HeightedBigTextField label={"Yeeted Result"} ref={'yeeted'} />
+                    <HeightedBigTextField label={"Yeeted Result"} innerRef={field => this.yeetedField = field} />
                 </Grid>
             </Grid>
             </div>
