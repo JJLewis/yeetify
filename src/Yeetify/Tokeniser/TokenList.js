@@ -4,7 +4,11 @@ export default class TokenList {
     }
 
     get tokenString() {
-        return this.tokens.join('');
+        return this.tokens.map(token => token.type).join('');
+    }
+
+    get valueString() {
+        return this.tokens.map(token => token.value).join('');
     }
 
     get length() {
