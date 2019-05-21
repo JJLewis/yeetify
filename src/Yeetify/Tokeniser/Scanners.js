@@ -99,9 +99,9 @@ export const Scanners = [
     WordScanner,
     NumberScanner,
     StringScanner,
+    NewLineScanner,
     SpaceScanner,
     CommentScanner,
     PreProcessorScanner,
     SymbolScanner,
-    NewLineScanner,
 ];

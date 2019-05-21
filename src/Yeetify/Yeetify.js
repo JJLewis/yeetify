@@ -1,8 +1,7 @@
 import { Token, TokenTypes } from './Tokeniser/Token';
 import { tokenise } from './Tokeniser/Tokeniser';
 import TokenList from './Tokeniser/TokenList';
-
-const yeetableTypes = [TokenTypes.word, TokenTypes.number, TokenTypes.string, TokenTypes.symbol];
+import { isTokenYeetable } from './Helpers';
 
 export function yeetify(text) {
     let tokenlist = tokenise(text);
@@ -15,11 +14,6 @@ export function yeetify(text) {
     padded.prependTokens(hashDefineTokens);
     mapTokensToYeets(padded, yeetMappings);
     return padded.valueString;
-}
-
-function isTokenYeetable(token) {
-    for (let yeetableType of yeetableTypes) if (token.type === yeetableType) return true;
-    return false;
 }
 
 function getYeetableTokens(tokenlist) {
