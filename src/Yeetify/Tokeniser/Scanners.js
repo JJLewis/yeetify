@@ -77,12 +77,11 @@ class NewLineScanner extends Scanner {
 class CommentScanner extends Scanner  {
     static get_first_token(text) {
         let comment1_re = /^\/{2}.*/;
-        let comment2_re = /^\/\*.*?\*\//;
+        let comment2_re = /^\/\*[^]*?\*\//;
         let found = comment1_re.exec(text);
         if (found) return new Token(TokenTypes.comment, found[0]);
         found = comment2_re.exec(text);
         if (found) return new Token(TokenTypes.comment, found[0]);
-        // TODO: check for multi line comments
         return null;
     }
 }
@@ -101,8 +100,8 @@ export const Scanners = [
     NumberScanner,
     StringScanner,
     SpaceScanner,
-    SymbolScanner,
-    NewLineScanner,
     CommentScanner,
     PreProcessorScanner,
+    SymbolScanner,
+    NewLineScanner,
 ];
