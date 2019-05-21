@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-sw.js");
 
 importScripts(
-  "/yeetify/precache-manifest.abf360eddeceaaa0a18eef50d0bf7264.js"
+  "/yeetify/precache-manifest.b6b34b495d636b2e9a0723ffe919ce6e.js"
 );
 
 self.addEventListener('message', (event) => {

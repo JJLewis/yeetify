@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/yeetify/static/css/main.584f321a.chunk.css",
-    "main.js": "/yeetify/static/js/main.b440466b.chunk.js",
-    "main.js.map": "/yeetify/static/js/main.b440466b.chunk.js.map",
+    "main.js": "/yeetify/static/js/main.ec4c4082.chunk.js",
+    "main.js.map": "/yeetify/static/js/main.ec4c4082.chunk.js.map",
     "runtime~main.js": "/yeetify/static/js/runtime~main.c0f09288.js",
     "runtime~main.js.map": "/yeetify/static/js/runtime~main.c0f09288.js.map",
     "static/js/2.a8fc2a9d.chunk.js": "/yeetify/static/js/2.a8fc2a9d.chunk.js",
     "static/js/2.a8fc2a9d.chunk.js.map": "/yeetify/static/js/2.a8fc2a9d.chunk.js.map",
     "index.html": "/yeetify/index.html",
-    "precache-manifest.abf360eddeceaaa0a18eef50d0bf7264.js": "/yeetify/precache-manifest.abf360eddeceaaa0a18eef50d0bf7264.js",
+    "precache-manifest.b6b34b495d636b2e9a0723ffe919ce6e.js": "/yeetify/precache-manifest.b6b34b495d636b2e9a0723ffe919ce6e.js",
     "service-worker.js": "/yeetify/service-worker.js",
     "static/css/main.584f321a.chunk.css.map": "/yeetify/static/css/main.584f321a.chunk.css.map"
   }

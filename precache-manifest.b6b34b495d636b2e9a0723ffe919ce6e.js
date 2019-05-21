@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1d42a5fc90bb957067b91b989930378a",
+    "revision": "a5713ab57df6d095ab526259501d9a6b",
     "url": "/yeetify/index.html"
   },
   {
-    "revision": "54868c9371c88e41d7d1",
+    "revision": "d4b3e2557461f549e661",
     "url": "/yeetify/static/css/main.584f321a.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/yeetify/static/js/2.a8fc2a9d.chunk.js"
   },
   {
-    "revision": "54868c9371c88e41d7d1",
-    "url": "/yeetify/static/js/main.b440466b.chunk.js"
+    "revision": "d4b3e2557461f549e661",
+    "url": "/yeetify/static/js/main.ec4c4082.chunk.js"
   },
   {
     "revision": "3ffaa62790e8263bbaa0",
